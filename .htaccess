@@ -1,0 +1,25 @@
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access 7 days"
+ExpiresByType css/css "access plus plus 10 minutes"
+ExpiresByType views/images/jpg "access plus 10 minutes"
+ExpiresByType views/images/png "access plus 10 minutes"
+ExpiresByType img/png "access plus 10 minutes"
+ExpiresByType img/jpg "access plus 10 minutes"
+</IfModule>
+
+<ifModule mod_headers.c>
+<filesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=60, public"
+</filesMatch>
+<filesMatch "\.(css|js)$">
+Header set Cache-Control "max-age=60, public"
+</filesMatch>
+<filesMatch "\.(xml|txt)$">
+Header set Cache-Control "max-age=172800, public, must-revalidate"
+</filesMatch>
+<filesMatch "\.(html|htm|php)$">
+Header set Cache-Control "max-age=172800, private, must-revalidate"
+</filesMatch>
+</ifModule>
+
